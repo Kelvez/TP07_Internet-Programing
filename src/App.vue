@@ -38,13 +38,13 @@
         </tr>
         <tr>
           <td>
-            <button type="button" class="btn btn-light">7</button>
+            <button v-on:click="showNumber(7)" type="button" class="btn btn-light">7</button>
           </td>
           <td>
-            <button type="button" class="btn btn-light">8</button>
+            <button v-on:click="showNumber(8)" type="button" class="btn btn-light">8</button>
           </td>
           <td>
-            <button type="button" class="btn btn-light">9</button>
+            <button v-on:click="showNumber(9)" type="button" class="btn btn-light">9</button>
           </td>
           <td>
             <button type="button" class="btn btn-secondary">÷</button>
@@ -55,13 +55,13 @@
         </tr>
         <tr>
           <td>
-            <button type="button" class="btn btn-light">4</button>
+            <button v-on:click="showNumber(4)" type="button" class="btn btn-light">4</button>
           </td>
           <td>
-            <button type="button" class="btn btn-light">5</button>
+            <button v-on:click="showNumber(5)" type="button" class="btn btn-light">5</button>
           </td>
           <td>
-            <button type="button" class="btn btn-light">6</button>
+            <button v-on:click="showNumber(6)" type="button" class="btn btn-light">6</button>
           </td>
           <td>
             <button type="button" class="btn btn-secondary">x</button>
@@ -72,19 +72,13 @@
         </tr>
         <tr>
           <td>
-            <button
-              v-on:click="showNumber(1)"
-              type="button"
-              class="btn btn-light"
-            >
-              1
-            </button>
+            <button v-on:click="showNumber(1)" type="button" class="btn btn-light">1</button>
           </td>
           <td>
-            <button type="button" class="btn btn-light">2</button>
+            <button v-on:click="showNumber(2)" type="button" class="btn btn-light">2</button>
           </td>
           <td>
-            <button type="button" class="btn btn-light">3</button>
+            <button v-on:click="showNumber(3)" type="button" class="btn btn-light">3</button>
           </td>
           <td rowspan="2">
             <button type="button" class="btn btn-secondary long-btn">+</button>
@@ -95,10 +89,10 @@
         </tr>
         <tr>
           <td>
-            <button type="button" class="btn btn-danger">C</button>
+            <button v-on:click="clear()" type="button" class="btn btn-danger">C</button>
           </td>
           <td>
-            <button type="button" class="btn btn-light">0</button>
+            <button v-on:click="showNumber(0)" type="button" class="btn btn-light">0</button>
           </td>
           <td>
             <button type="button" class="btn btn-light">.</button>
@@ -126,8 +120,16 @@ export default {
     showNumber(number) {
       // Assign number when user click to the inputNumber data
       // To access private data from methods, use (this.)
-      this.inputNumber = number;
+      if (this.inputNumber == 0) {
+        this.inputNumber = number;
+      } else {
+        this.inputNumber = this.inputNumber*10 + number;
+      }
     },
+
+    clear() {
+      this.inputNumber=0;
+    }
   },
 };
 </script>
